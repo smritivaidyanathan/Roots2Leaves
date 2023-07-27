@@ -19,47 +19,49 @@ class Person:
     def findRelationRecur(self, person1Name, person2Name):
         sumResult = 0
         generationalGap = sys.maxsize
-        print(self.name)
+        #print(self.name)
 
         foundSelf = False
 
         if person1Name == self.name or person2Name == self.name:
             sumResult=1
             foundSelf = True
-            print("This is " + self.name)
+            #print("This is " + self.name)
 
         for child in self.children:
-            print("looking in " + self.name + "'s child named " + child.name)
+            #print("looking in " + self.name + "'s child named " + child.name)
             result = child.findRelationRecur(person1Name, person2Name)
             sumResult += result[0]
 
             if (sumResult == 2):
-                print("success")
+                #print("success")
                 if (result[1] == None):
-                    print("Common ancestor found: " + self.name + " in "  + self.name + "'s child named " + child.name)
-                    print("final generational gap = " + str(min(result[2], generationalGap) + 1))
-                    return (sumResult, self, min(result[2], generationalGap) + 1)
+                    #print("Common ancestor found: " + self.name + " in "  + self.name + "'s child named " + child.name)
+                    #print("final generational gap = " + str(min(result[2], generationalGap) + 1))
+                    #print(abs(generationalGap - result[2]))
+                    return (sumResult, self, min(result[2], generationalGap) + 1, abs(generationalGap - result[2]))
                     
                 else:
-                    print("Going back up the tree from the common ancestor found: " + result[1].name + "in "  + self.name + "'s child named " + child.name)
-                    return (sumResult, result[1], result[2])
+                    #print("Going back up the tree from the common ancestor found: " + result[1].name + "in "  + self.name + "'s child named " + child.name)
+                    return (sumResult, result[1], result[2], 0)
             if (result[0] == 1):
-                print("found one of them in "  + self.name + "'s child named " + child.name)
+                #print("found one of them in "  + self.name + "'s child named " + child.name)
                 generationalGap = min(result[2], generationalGap)
+                #print(abs(generationalGap - result[2]), 0)
             
 
         if (sumResult == 1 and len(self.children) !=0):
             if (foundSelf):
-                return (sumResult, None, 0)
-            print("going up after having found only one in list of children in " +  self.name)
-            print("adding to generationalgap :" + str(generationalGap + 1))
-            return (sumResult, None, generationalGap + 1)
+                return (sumResult, None, 0, 0)
+            #print("going up after having found only one in list of children in " +  self.name)
+            #print("adding to generationalgap :" + str(generationalGap + 1))
+            return (sumResult, None, generationalGap + 1, 0)
         else:
-            if (sumResult == 1):
-                print("Once  again, This is " + self.name)
-            else:
-                print("found no one in " + self.name)
-            return (sumResult, None, 0)
+            #if (sumResult == 1):
+                #print("Once  again, This is " + self.name)
+            #else:
+                #print("found no one in " + self.name)
+            return (sumResult, None, 0, 0)
         
 
     
@@ -165,16 +167,15 @@ class FamilyTree:
             result = ancestor.findRelationRecur(person1name, person2name)
             if result[0] == 2:
                 related = True
-                print("_________" + ancestor.name + "_________")
-                print
-                resultgeneration = result[2]
+                resultgeneration = result
                 if person1name == result[1].name or person2name == result[1].name:
                     print(person1name + " and " + person2name + " lie in a direct line of descent")
                     print(person1name + " and " + person2name + " have " + str(result[2]) + " generations between them.\n")
                     return
         if related:
             print(person1name + " and "+  person2name + " share a recent common ancestor")
-            print(person1name + " and " + person2name + " have " + str(resultgeneration) + " generations between them and the most recent common ancestor.\n")
+            print(person1name + " and " + person2name + " have " + str(resultgeneration[2]) + " generations between them and the most recent common ancestor.")
+            print(person1name + " and " + person2name + " have " + str(resultgeneration[3]) + " generations between them\n")
         else:
             print(person1name + " and "+  person2name + " are not related\n")
 
@@ -230,16 +231,16 @@ family.printFamily()
 
 print("\n")
 
-#family.findRelation("Smriti", "Narayanan")
-#family.findRelation("Smriti", "Navina")
-#family.findRelation("Smriti", "Manas")
-#family.findRelation("Smriti", "Vijay")
-#family.findRelation("Smriti", "Ambulu")
-#family.findRelation("Vedh", "Manavi")
-#family.findRelation("Vedh", "Vaidyanathan")
-#family.findRelation("Vijay2", "Smriti")
-#family.findRelation("Advika", "Smriti")
-#family.findRelation("Manas", "Varun")
+family.findRelation("Smriti", "Narayanan")
+family.findRelation("Smriti", "Navina")
+family.findRelation("Smriti", "Manas")
+family.findRelation("Smriti", "Vijay")
+family.findRelation("Smriti", "Ambulu")
+family.findRelation("Vedh", "Manavi")
+family.findRelation("Vedh", "Vaidyanathan")
+family.findRelation("Vijay2", "Smriti")
+family.findRelation("Advika", "Smriti")
+family.findRelation("Manas", "Varun")
 
 
 
