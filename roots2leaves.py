@@ -186,62 +186,6 @@ class FamilyTree:
 
         
 
-family = FamilyTree()
-family.add_relation("Smriti", "Narayanan", "parent")
-family.add_relation("Smriti", "Narayanan", "parent")
-family.add_relation("Smriti", "Narayanan", "parent")
-family.add_relation("Smriti", "Padma", "parent")
-family.add_relation("Narayanan", "Vaidyanathan", "parent")
-family.add_relation("Seetha", "Narayanan", "child")
-family.add_relation("Narayanan", "Vijay", "sibling")
-family.add_relation("Narayanan", "Sukanya", "sibling")
-family.add_relation("Vijay", "Vedh", "child")
-family.add_relation("Vijay", "Sanjana", "child")
-family.add_relation("Sukanya", "Manas", "child")
-family.add_relation("Manas", "Vijay2", "parent")
-family.add_relation("Manas", "Varun", "sibling")
-
-
-family.add_relation("Prabha", "Vishal", "child")
-family.add_relation("Prabha", "Vidyuth", "child")
-family.add_relation("Vidyuth", "Manavi", "sibling")
-family.add_relation("Padma", "Akila", "parent")
-family.add_relation("Padma", "Sivaraman", "parent")
-family.add_relation("Padma", "Prabha", "sibling")
-
-family.add_relation("Akila", "Subbupatti", "parent")
-family.add_relation("Ambulu", "Doraiswami", "parent")
-family.add_relation("Ambulu", "Akila", "sibling")
-
-family.add_relation("Advika", "Vivin", "sibling")
-family.add_relation("Advika", "Anand", "parent")
-family.add_relation("Vivin", "Navina", "parent")
-family.add_relation("Ambulu", "Anand", "child")
-family.printFamily()
-
-# family.findRecentCommonAncestors("Smriti", "Narayanan")
-# family.findRecentCommonAncestors("Smriti", "Navina")
-# family.findRecentCommonAncestors("Smriti", "Manas")
-# family.findRecentCommonAncestors("Vedh", "Manavi")
-# family.findRecentCommonAncestors("Vedh", "Vaidyanathan")
-# family.findRecentCommonAncestors("Vijay2", "Smriti")
-# family.findRecentCommonAncestors("Advika", "Smriti")
-# family.findRecentCommonAncestors("Manas", "Varun")
-# family.findRecentCommonAncestors("Smriti", "Vijay")
-
-print("\n")
-
-family.findRelation("Smriti", "Narayanan")
-family.findRelation("Smriti", "Navina")
-family.findRelation("Smriti", "Manas")
-family.findRelation("Smriti", "Vijay")
-family.findRelation("Smriti", "Ambulu")
-family.findRelation("Vedh", "Manavi")
-family.findRelation("Vedh", "Vaidyanathan")
-family.findRelation("Vijay2", "Smriti")
-family.findRelation("Advika", "Smriti")
-family.findRelation("Manas", "Varun")
-
 
 
              
